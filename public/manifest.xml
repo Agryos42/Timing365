@@ -1,23 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
            xsi:type="MailApp">
-  <Id>9c8aad41-df24-4b86-9d50-000000000001</Id>
+  <Id>{APP_ID}</Id>
   <Version>1.0.0.0</Version>
-  <ProviderName>Timing365</ProviderName>
-  <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Timing365" />
-  <Description DefaultValue="Outlook add-in" />
+  <ProviderName>{APP_NAME}</ProviderName>
+  <DefaultLocale>fr-FR</DefaultLocale>
+  <DisplayName DefaultValue="{APP_NAME}" />
+  <Description DefaultValue="{APP_DESC}" />
+  <IconUrl DefaultValue="{ICON_URL}" />
+  <SupportUrl DefaultValue="{SUPPORT_URL}" />
   <Hosts>
     <Host Name="Mailbox" />
   </Hosts>
   <Requirements>
-    <Sets DefaultMinVersion="1.1">
+    <Sets DefaultMinVersion="1.13">
       <Set Name="Mailbox" />
     </Sets>
   </Requirements>
+  <Resources>
+    <bt:Images>
+      <bt:Image id="icon32" DefaultUrl="{ICON_URL}" />
+    </bt:Images>
+    <bt:Urls>
+      <bt:Url id="TaskPaneUrl" DefaultValue="{BUNDLE_URL}" />
+      <bt:Url id="SupportUrl" DefaultValue="{SUPPORT_URL}" />
+    </bt:Urls>
+  </Resources>
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://localhost:3000/taskpane.html" />
+    <SourceLocation DefaultValue="{BUNDLE_URL}" />
   </DefaultSettings>
   <Permissions>ReadWriteItem</Permissions>
+  <VersionOverrides xsi:type="mailappor:VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="MailHost">
+        <DesktopFormFactor>
+          <ExtensionPoint xsi:type="MessageComposeCommandSurface">
+            <OfficeCommand>
+              <Id>msgComposeLaunch</Id>
+              <DisplayName DefaultValue="Ouvrir le volet" />
+              <Icon>
+                <bt:Image id="icon32" />
+              </Icon>
+              <Action xsi:type="ShowTaskpane">
+                <TaskpaneId>msgComposePane</TaskpaneId>
+                <SourceLocation xsi:bind="bt:Url id='TaskPaneUrl'" />
+              </Action>
+            </OfficeCommand>
+          </ExtensionPoint>
+          <ExtensionPoint xsi:type="AppointmentOrganizerCommandSurface">
+            <OfficeCommand>
+              <Id>apptOrganizerLaunch</Id>
+              <DisplayName DefaultValue="Ouvrir le volet" />
+              <Icon>
+                <bt:Image id="icon32" />
+              </Icon>
+              <Action xsi:type="ShowTaskpane">
+                <TaskpaneId>apptPane</TaskpaneId>
+                <SourceLocation xsi:bind="bt:Url id='TaskPaneUrl'" />
+              </Action>
+            </OfficeCommand>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+  </VersionOverrides>
 </OfficeApp>
