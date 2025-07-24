@@ -1,0 +1,22 @@
+{
+  "name": "timing365-addin",
+  "version": "0.1.0",
+  "description": "Outlook TaskPane add-in built with React and Fluent UI",
+  "scripts": {
+    "start": "webpack serve --mode development --open",
+    "build": "webpack --mode production"
+  },
+  "dependencies": {
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "@fluentui/react": "^8.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.0.0",
+    "ts-loader": "^9.0.0",
+    "webpack": "^5.0.0",
+    "webpack-cli": "^4.0.0",
+    "webpack-dev-server": "^4.0.0",
+    "html-webpack-plugin": "^5.3.1"
+  }
+}

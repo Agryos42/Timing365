@@ -1,2 +1,19 @@
-# Timing365
-add-in Outlook (bureau et web) pour le suivi d’activité individuelle
+# Timing365 Outlook Add-in
+
+This repository contains a React-based Office Add-in for Outlook. The project was
+bootstrapped from the official Office Add-in TaskPane React template. It uses
+React 17 and Fluent UI components.
+
+## Project Structure
+
+- `src/` – React source code
+- `public/` – Office manifest and static assets
+- `build/` – Webpack build output
+
+## Scripts
+
+- `npm run start` – Launch a development server at `https://localhost:3000`
+- `npm run build` – Build the production bundle into the `build/` folder
+
+The manifest at `public/manifest.xml` references `taskpane.html`, which is
+created by the Webpack build.
